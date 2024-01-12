@@ -16,9 +16,9 @@ MonoBehaviour:
   DevAccountToken: 395szo5544n8pqrkyty7k9dbf8e1jethf9jqiwqrru5wpg7jxartkdhty7twd5uziur9ood84zmcyqmjgdpxfwzumkbbum4yc1xfj63mfck63j3ic46fuqic56x7ai9es53kp7jm6wa1ubptnb9qu3zrw3og7fpkm44dae84snet8qr1q6wpcgtr3o4wgfxutixo9n4q
   AadAuthorization: 
   SelectedStudio: FatherAlexeiCorp
-  SdkPath: Assets/PlayFabSdk
+  SdkPath: Assets/PlayFabSDK
   EdExPath: 
-  LocalCloudScriptPath: 
+  LocalCloudScriptPath: D:/Unity Projects/My Mulltiplayer/Assets/PlayFabEditorExtensions/Editor/Resources/.CloudScript.js
   PanelIsShown: 0
-  curMainMenuIdx: 0
-  curSubMenuIdx: 0
+  curMainMenuIdx: 1
+  curSubMenuIdx: 2
