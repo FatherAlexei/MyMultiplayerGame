@@ -8,36 +8,41 @@ using UnityEditor.PackageManager;
 
 public class PlayfabLogin : MonoBehaviour
 {
-    public MyUi myUiInstance;
     void Start()
     {
         if (string.IsNullOrEmpty(PlayFabSettings.staticSettings.TitleId))
             PlayFabSettings.staticSettings.TitleId = "6EAD7";
+
+        LogIn();
     }
 
     public void LogIn()
     {
+        var needCreation = PlayerPrefs.HasKey(StaticClass.AuthGuidKey);
+        var id = PlayerPrefs.GetString(StaticClass.AuthGuidKey, Guid.NewGuid().ToString());
 
          var request = new LoginWithCustomIDRequest
          {
-             CustomId = "Player 1",
+             CustomId = id,
              CreateAccount = true
          };
 
-         PlayFabClientAPI.LoginWithCustomID(request, OnLoginSucces, OnLoginError);
+         PlayFabClientAPI.LoginWithCustomID(request,
+             result => {
+                 PlayerPrefs.SetString(StaticClass.AuthGuidKey, id);
+                 OnLoginSucces(result);
+                 }, OnLoginError);
     }
 
     public void OnLoginError(PlayFabError error)
     {
         var errorMessage = error.GenerateErrorReport();
         Debug.Log(errorMessage);
-        myUiInstance.ChangeBGColor(false);
     }
 
     private void OnLoginSucces(LoginResult result)
     {
         Debug.Log("COmplete Login!");
-        myUiInstance.ChangeBGColor(true);
     }
 
 }
